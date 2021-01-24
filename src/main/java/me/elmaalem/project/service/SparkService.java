@@ -38,7 +38,7 @@ public class SparkService {
         Dataset<Row> orders = getDataset()
                 .filter((FilterFunction<Orders>) order -> order.getProductCategory().equals("Office Supplies"))
                 .sort("sales")
-                .where("date < \"2011-08-31\" and date > \"2010-03-16\"")
+                .where("date < \""+endDate+"\" and date > \""+startDate+"\"")
                 .select("customerName","date","sales","quantity","profit","unitPrice","customerSegment");
         orders.show((int) getDataset().count());
     }
